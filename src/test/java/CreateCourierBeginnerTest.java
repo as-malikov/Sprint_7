@@ -1,10 +1,13 @@
+import api.CourierApi;
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import model.CourierData;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.is;
 
@@ -16,20 +19,19 @@ public class CreateCourierBeginnerTest {
 
     @Test
     public void courierCanBeCreatedTest() {
-        CourierData courierData = new CourierData("asdasdddjj", "ads", "asda");
+        CourierData courierData = new CourierData("asdasdddjjsaqda", "ads", "asda");
+        CourierApi courierApi = new CourierApi();
 
-        ValidatableResponse response =
-                given()
-                        .log().all()
-                        .header("Content-type", "Application/json")
-                        .and()
-                        .body(courierData)
-                        .when()
-                        .post("/api/v1/courier")
-                        .then();
+        ValidatableResponse response = courierApi.createCourier(courierData);
 
-        response.assertThat()
-                .statusCode(SC_OK)
+        response.log().all()
+                .assertThat()
+                .statusCode(SC_CREATED)
                 .body("ok", is(true));
+    }
+
+     @After
+    public void deleteCourier() {
+        // удалить курьера
     }
 }
