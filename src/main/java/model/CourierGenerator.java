@@ -22,6 +22,15 @@ public class CourierGenerator {
         return new CourierData(login, password, firstName);
     }
 
+    @Step("Generate random courier lombok default")
+    public static CourierDataLombok getRandomCourierLombok() {
+        String login = LOGIN + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
+        String password = PASSWORD + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
+        String firstName = FIRST_NAME + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
+
+        return new CourierDataLombok(login, password, firstName);
+    }
+
     @Step("Generate random courier by data")
     public static CourierData getRandomCourier(String loginParam, String passwordParam, String firstNameParam) {
         String login = loginParam + UNDERLINE + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
@@ -30,4 +39,6 @@ public class CourierGenerator {
 
         return new CourierData(login, password, firstName);
     }
+
+
 }
