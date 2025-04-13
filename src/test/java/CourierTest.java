@@ -1,4 +1,5 @@
 import api.CourierApi;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import model.CourierData;
 import model.CourierId;
@@ -23,6 +24,7 @@ public class CourierTest {
         courierId = new CourierId();
     }
 
+    @DisplayName("Check courier can be created")
     @Test
     public void courierCanBeCreatedTest() {
         response = courierApi.createCourier(courierData);
@@ -33,6 +35,7 @@ public class CourierTest {
                 .body("ok", is(true));
     }
 
+    @DisplayName("Check courier can be logged in")
     @Test
     public void courierCanBeLoggedIn() {
         response = courierApi.loginCourier(courierData);
@@ -45,6 +48,7 @@ public class CourierTest {
         courierId.setId(response.extract().jsonPath().getString("id"));
     }
 
+//    @DisplayName("Check courier can be deleted")
     @AfterClass
     public static void deleteCourier() {
         response = courierApi.deleteCourier(courierId);

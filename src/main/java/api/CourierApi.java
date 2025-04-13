@@ -1,5 +1,6 @@
 package api;
 
+import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 import model.CourierCredantials;
 import model.CourierData;
@@ -14,6 +15,7 @@ public class CourierApi extends RestApi {
     public static final String API_V_1_COURIER_LOGIN = "/api/v1/courier/login";
     public static final String SLASH = "/";
 
+    @Step("Create courier")
     public ValidatableResponse createCourier(CourierData courier) {
         return given()
                 .spec(requestSpecification())
@@ -24,6 +26,7 @@ public class CourierApi extends RestApi {
                 .then();
     }
 
+    @Step("Login courier")
     public ValidatableResponse loginCourier(CourierData courier) {
         CourierCredantials courierCredantials = getCourierCredantials(courier);
         return given()
@@ -35,6 +38,7 @@ public class CourierApi extends RestApi {
                 .then();
     }
 
+    @Step("Delete courier")
     public ValidatableResponse deleteCourier(CourierId courierId) {
         return given()
                 .spec(requestSpecification())
