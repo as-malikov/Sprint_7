@@ -1,14 +1,18 @@
 package api;
 
 import io.restassured.response.ValidatableResponse;
+import model.CourierCredantials;
 import model.CourierData;
+import model.CourierId;
 
 import static io.restassured.RestAssured.given;
+import static model.CourierCredantials.getCourierCredantials;
 
 public class CourierApi extends RestApi {
 
     public static final String API_V1_COURIER = "/api/v1/courier";
     public static final String API_V_1_COURIER_LOGIN = "/api/v1/courier/login";
+    public static final String SLASH = "/";
 
     public ValidatableResponse createCourier(CourierData courier) {
         return given()
@@ -21,24 +25,23 @@ public class CourierApi extends RestApi {
     }
 
     public ValidatableResponse loginCourier(CourierData courier) {
+        CourierCredantials courierCredantials = getCourierCredantials(courier);
         return given()
-                .log().all()
-                .header("Content-type", "Application/json")
+                .spec(requestSpecification())
                 .and()
-                .body(courier)
+                .body(courierCredantials)
                 .when()
                 .post(API_V_1_COURIER_LOGIN)
                 .then();
     }
 
-    public ValidatableResponse deleteCourier(CourierData courier, String id) {
+    public ValidatableResponse deleteCourier(CourierId courierId) {
         return given()
-                .log().all()
-                .header("Content-type", "Application/json")
+                .spec(requestSpecification())
                 .and()
-                .body(courier)
+                .body(courierId)
                 .when()
-                .post(API_V1_COURIER + id)
+                .delete(API_V1_COURIER + SLASH + courierId.getId())
                 .then();
     }
 }

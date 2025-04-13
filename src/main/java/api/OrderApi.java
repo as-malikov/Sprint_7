@@ -2,7 +2,7 @@ package api;
 
 import io.restassured.response.ValidatableResponse;
 
-public class OrderApi extends RestApi{
+public class OrderApi extends RestApi {
     public ValidatableResponse createOrder() {
         return null;
     }
