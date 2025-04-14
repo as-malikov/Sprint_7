@@ -2,13 +2,13 @@ package api;
 
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
-import model.CourierCredantials;
+import model.courier.CourierCredantialsLombok;
 import model.CourierData;
-import model.CourierDataLombok;
-import model.CourierId;
+import model.courier.CourierDataLombok;
+import model.courier.CourierIdLombok;
 
 import static io.restassured.RestAssured.given;
-import static model.CourierCredantials.getCourierCredantials;
+import static model.courier.CourierCredantialsLombok.getCourierCredantials;
 
 public class CourierApi extends RestApi {
 
@@ -17,16 +17,6 @@ public class CourierApi extends RestApi {
     public static final String SLASH = "/";
 
     @Step("Create courier")
-    public ValidatableResponse createCourier(CourierData courier) {
-        return given()
-                .spec(requestSpecification())
-                .and()
-                .body(courier)
-                .when()
-                .post(API_V1_COURIER)
-                .then();
-    }
-    @Step("Create courier lombok")
     public ValidatableResponse createCourierLombok(CourierDataLombok courier) {
         return given()
                 .spec(requestSpecification())
@@ -38,25 +28,25 @@ public class CourierApi extends RestApi {
     }
 
     @Step("Login courier")
-    public ValidatableResponse loginCourier(CourierData courier) {
-        CourierCredantials courierCredantials = getCourierCredantials(courier);
+    public ValidatableResponse loginCourier(CourierDataLombok courier) {
+        CourierCredantialsLombok courierCredantialsLombok = getCourierCredantials(courier);
         return given()
                 .spec(requestSpecification())
                 .and()
-                .body(courierCredantials)
+                .body(courierCredantialsLombok)
                 .when()
                 .post(API_V_1_COURIER_LOGIN)
                 .then();
     }
 
     @Step("Delete courier")
-    public ValidatableResponse deleteCourier(CourierId courierId) {
+    public ValidatableResponse deleteCourier(CourierIdLombok courierIdLombok) {
         return given()
                 .spec(requestSpecification())
                 .and()
-                .body(courierId)
+                .body(courierIdLombok)
                 .when()
-                .delete(API_V1_COURIER + SLASH + courierId.getId())
+                .delete(API_V1_COURIER + SLASH + courierIdLombok.getId())
                 .then();
     }
 }

@@ -1,15 +1,13 @@
 import api.CourierApi;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import model.CourierData;
-import model.CourierDataLombok;
-import model.CourierId;
-import org.junit.AfterClass;
+import model.courier.CourierDataLombok;
+import model.courier.CourierIdLombok;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static model.CourierGenerator.getRandomCourier;
-import static model.CourierGenerator.getRandomCourierLombok;
+import static util.CourierGenerator.getRandomCourier;
+import static util.CourierGenerator.getRandomCourierLombok;
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
@@ -18,13 +16,13 @@ public class CreateCourierLombokTest {
     private static CourierDataLombok courierDataLomboka;
     private static CourierApi courierApi;
     private static ValidatableResponse response;
-    private static CourierId courierId;
+    private static CourierIdLombok courierIdLombok;
 
     @BeforeClass
     public static void init() {
         courierDataLomboka = getRandomCourierLombok();
         courierApi = new CourierApi();
-        courierId = new CourierId();
+        courierIdLombok = new CourierIdLombok();
     }
 
     @DisplayName("Check courier can be created")

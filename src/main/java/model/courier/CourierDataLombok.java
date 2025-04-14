@@ -1,4 +1,4 @@
-package model;
+package model.courier;
 
 import io.qameta.allure.internal.shadowed.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

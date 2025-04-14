@@ -1,9 +1,9 @@
-package model;
+package util;
 
 import io.qameta.allure.Step;
+import model.CourierData;
+import model.courier.CourierDataLombok;
 import org.apache.commons.lang3.RandomStringUtils;
-
-import java.util.Random;
 
 public class CourierGenerator {
 
@@ -39,6 +39,4 @@ public class CourierGenerator {
 
         return new CourierData(login, password, firstName);
     }
-
-
 }
