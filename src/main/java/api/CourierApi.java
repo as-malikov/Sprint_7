@@ -2,13 +2,12 @@ package api;
 
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
-import model.courier.CourierCredantialsLombok;
-import model.CourierData;
+import model.courier.CourierCredentialLombok;
 import model.courier.CourierDataLombok;
 import model.courier.CourierIdLombok;
 
 import static io.restassured.RestAssured.given;
-import static model.courier.CourierCredantialsLombok.getCourierCredantials;
+import static model.courier.CourierCredentialLombok.getCourierCredentials;
 
 public class CourierApi extends RestApi {
 
@@ -29,11 +28,11 @@ public class CourierApi extends RestApi {
 
     @Step("Login courier")
     public ValidatableResponse loginCourier(CourierDataLombok courier) {
-        CourierCredantialsLombok courierCredantialsLombok = getCourierCredantials(courier);
+        CourierCredentialLombok courierCredentialLombok = getCourierCredentials(courier);
         return given()
                 .spec(requestSpecification())
                 .and()
-                .body(courierCredantialsLombok)
+                .body(courierCredentialLombok)
                 .when()
                 .post(API_V_1_COURIER_LOGIN)
                 .then();
