@@ -70,7 +70,7 @@ public class CreateCourierTest {
             loginCourierResponse.log().all()
                     .assertThat()
                     .body("id", notNullValue());
-            courierIdLombok.setId(loginCourierResponse.extract().jsonPath().getString("id"));
+            courierIdLombok.setId(loginCourierResponse.extract().jsonPath().getInt("id"));
 
             ValidatableResponse deleteCourierResponse = courierApi.deleteCourier(courierIdLombok);
             deleteCourierResponse.log().all()

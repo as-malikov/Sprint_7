@@ -40,7 +40,7 @@ public class LoginCourierTest {
                 .statusCode(SC_OK)
                 .body("id", notNullValue());
 
-        courierIdLombok.setId(loginCourierResponse.extract().jsonPath().getString("id"));
+        courierIdLombok.setId(loginCourierResponse.extract().jsonPath().getInt("id"));
     }
 
     @DisplayName("The courier cannot be login with incorrect name.")
@@ -92,7 +92,7 @@ public class LoginCourierTest {
             loginCourierResponse.log().all()
                     .assertThat()
                     .body("id", notNullValue());
-            courierIdLombok.setId(loginCourierResponse.extract().jsonPath().getString("id"));
+            courierIdLombok.setId(loginCourierResponse.extract().jsonPath().getInt("id"));
 
             ValidatableResponse deleteCourierResponse = courierApi.deleteCourier(courierIdLombok);
             deleteCourierResponse.log().all()

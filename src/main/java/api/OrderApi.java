@@ -24,7 +24,7 @@ public class OrderApi extends RestApi {
                 .and()
                 .body(orderParam)
                 .when()
-                .post(API_V_1_ORDERS)
+                .get(API_V_1_ORDERS)
                 .then();
     }
 

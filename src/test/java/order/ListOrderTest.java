@@ -9,6 +9,7 @@ import model.order.OrderParamLombok;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.notNullValue;
 import static util.CourierGenerator.getRandomCourierLombok;
@@ -16,17 +17,22 @@ import static util.OrderParamGenerator.getRandomOrderParam;
 
 public class ListOrderTest {
     private CourierIdLombok courierId;
+    private static CourierApi courierApi;
     private static OrderApi orderApi;
     private OrderParamLombok orderParamLombok;
-    CourierApi courierApi;
 
 
     @Before
     public void init() {
         CourierDataLombok courier = getRandomCourierLombok();
+        System.out.println(courier);
+        courierApi = new CourierApi();
         orderApi = new OrderApi();
         courierId = new CourierIdLombok();
-        courierApi.createCourierLombok(courier);
+        ValidatableResponse response = courierApi.createCourierLombok(courier);
+        response.log().all()
+                .assertThat()
+                .statusCode(SC_CREATED);
 
         ValidatableResponse loginCourierResponse = courierApi.loginCourier(courier);
         courierId.setId(loginCourierResponse.extract().jsonPath().getInt("id"));
