@@ -7,18 +7,21 @@ import model.order.OrderDataLombok;
 import model.order.TrackId;
 import org.junit.Before;
 import org.junit.Test;
+import util.OrderGenerator;
 
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.hamcrest.Matchers.notNullValue;
-import static util.orderGenerator.*;
+import static util.OrderGenerator.*;
 
 public class CreateOrderTest {
     private static OrderDataLombok order;
     private static OrderApi orderApi;
     private static TrackId trackId;
+    OrderGenerator orderGenerator;
 
     @Before
     public void init() {
+        orderGenerator = new OrderGenerator();
         orderApi = new OrderApi();
         trackId = new TrackId();
     }

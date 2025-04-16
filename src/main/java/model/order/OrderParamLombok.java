@@ -1,15 +1,13 @@
 package model.order;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor()
+@RequiredArgsConstructor
 public class OrderParamLombok {
+    @NonNull
     private int courierId;
     private String nearestStation;
     private int limit;

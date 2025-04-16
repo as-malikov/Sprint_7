@@ -19,7 +19,7 @@ public class OrderApi extends RestApi {
                 .then();
     }
 
-    public ValidatableResponse getList(OrderParamLombok orderParam) {
+    public ValidatableResponse getOrdersList(OrderParamLombok orderParam) {
         return given().spec(requestSpecification())
                 .and()
                 .body(orderParam)

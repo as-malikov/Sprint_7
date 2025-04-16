@@ -2,7 +2,6 @@ package util;
 
 import io.qameta.allure.Step;
 import model.order.OrderDataLombok;
-import org.apache.commons.lang3.RandomUtils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +11,7 @@ import java.util.Random;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
-public class orderGenerator {
+public class OrderGenerator {
     public static final int NINE_NUMBER = 9;
     public static final String FIRST_NAME = "firstName_";
     public static final String LAST_NAME = "lastName_";
