@@ -1,0 +1,111 @@
+[ {
+  "uid" : "b16baa1f927c3350",
+  "name" : "Check courier can be created",
+  "time" : {
+    "start" : 1744891525624,
+    "stop" : 1744891526616,
+    "duration" : 992
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4337813a68775e2b",
+  "name" : "The order can be created with one BLACK color",
+  "time" : {
+    "start" : 1744891458197,
+    "stop" : 1744891458573,
+    "duration" : 376
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "f67b9570e1ddde56",
+  "name" : "The order can be created without color",
+  "time" : {
+    "start" : 1744891457835,
+    "stop" : 1744891458195,
+    "duration" : 360
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "1814f6db674e7f9a",
+  "name" : "The order can be created with BLACK and GREY color",
+  "time" : {
+    "start" : 1744891454795,
+    "stop" : 1744891457784,
+    "duration" : 2989
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "451059be1f85075f",
+  "name" : "Check courier can be login",
+  "time" : {
+    "start" : 1744891463014,
+    "stop" : 1744891464276,
+    "duration" : 1262
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2e1d75371912726e",
+  "name" : "The courier cannot be login without password.",
+  "time" : {
+    "start" : 1744891464279,
+    "stop" : 1744891525622,
+    "duration" : 61343
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "feef2371476e7a0a",
+  "name" : "Order List have be returned",
+  "time" : {
+    "start" : 1744891458575,
+    "stop" : 1744891460403,
+    "duration" : 1828
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fb61568138443f32",
+  "name" : "The courier cannot be login with incorrect name.",
+  "time" : {
+    "start" : 1744891460406,
+    "stop" : 1744891461723,
+    "duration" : 1317
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fd9aff84bd9a6a62",
+  "name" : "Check courier cannot be created without password",
+  "time" : {
+    "start" : 1744891528150,
+    "stop" : 1744891528822,
+    "duration" : 672
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "57be7394be8aa6b1",
+  "name" : "The courier cannot be login with incorrect password.",
+  "time" : {
+    "start" : 1744891461725,
+    "stop" : 1744891463013,
+    "duration" : 1288
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2fbcec0b8f48e8e2",
+  "name" : "The courier cannot be created, if courier name is not unique.",
+  "time" : {
+    "start" : 1744891526617,
+    "stop" : 1744891528150,
+    "duration" : 1533
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

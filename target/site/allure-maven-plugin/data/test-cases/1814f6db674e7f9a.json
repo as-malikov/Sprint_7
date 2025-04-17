@@ -1,0 +1,111 @@
+{
+  "uid" : "1814f6db674e7f9a",
+  "name" : "The order can be created with BLACK and GREY color",
+  "fullName" : "order.CreateOrderTest.orderCanBeCreatedWithBlackAndGreyColorTest",
+  "historyId" : "43f2b0698eafe3b743fbddf05b8bb34b",
+  "time" : {
+    "start" : 1744891454795,
+    "stop" : 1744891457784,
+    "duration" : 2989
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Generate random order default with Black and Grey color",
+      "time" : {
+        "start" : 1744891454818,
+        "stop" : 1744891454842,
+        "duration" : 24
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Create order",
+      "time" : {
+        "start" : 1744891454864,
+        "stop" : 1744891457156,
+        "duration" : 2292
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "a5a9ed2c12fbb9b0",
+        "name" : "Request",
+        "source" : "a5a9ed2c12fbb9b0.html",
+        "type" : "text/html",
+        "size" : 1497
+      }, {
+        "uid" : "88024c79f8e1c4c3",
+        "name" : "HTTP/1.1 201 Created",
+        "source" : "88024c79f8e1c4c3.html",
+        "type" : "text/html",
+        "size" : 750
+      } ],
+      "parameters" : [ {
+        "name" : "order",
+        "value" : "OrderData(firstName=firstName_ErAayjWMi, lastName=lastName_NxPHIjcsp, address=address_jjNOcZJyu, metroStation=metroStation_pbgdtKLir, phone=+7 800 877 08 06, rentTime=15, deliveryDate=2025-04-26, comment=comment_kNpMsuxtV, color=[BLACK, GREY])"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 2,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 2,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "order"
+  }, {
+    "name" : "testClass",
+    "value" : "order.CreateOrderTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "orderCanBeCreatedWithBlackAndGreyColorTest"
+  }, {
+    "name" : "suite",
+    "value" : "order.CreateOrderTest"
+  }, {
+    "name" : "host",
+    "value" : "iroot-eltex"
+  }, {
+    "name" : "thread",
+    "value" : "3609459@iroot-eltex.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit4"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "1814f6db674e7f9a.json",
+  "parameterValues" : [ ]
+}
