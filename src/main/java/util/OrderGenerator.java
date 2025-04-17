@@ -1,7 +1,7 @@
 package util;
 
 import io.qameta.allure.Step;
-import model.order.OrderDataLombok;
+import model.order.OrderData;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -26,24 +26,24 @@ public class OrderGenerator {
     public static final int TWO_BOUND = 100;
 
     @Step("Generate random order default without color")
-    public static OrderDataLombok getRandomOrderWithoutColor() {
+    public static OrderData getRandomOrderWithoutColor() {
         return templateOrderGenerate(genetateColorList());
     }
 
     @Step("Generate random order default without Black color")
-    public static OrderDataLombok getRandomOrderWithBlackColor() {
+    public static OrderData getRandomOrderWithBlackColor() {
         return templateOrderGenerate(genetateColorList(BLACK_COLOR));
     }
 
     @Step("Generate random order default with Black and Grey color")
-    public static OrderDataLombok getRandomOrderWithBlackAndGreyColor() {
+    public static OrderData getRandomOrderWithBlackAndGreyColor() {
         List<String> colors = new ArrayList<>();
         colors.add(BLACK_COLOR);
         colors.add(GREY_COLOR);
         return templateOrderGenerate(genetateColorList(colors));
     }
 
-    public static OrderDataLombok templateOrderGenerate(List<String> color) {
+    public static OrderData templateOrderGenerate(List<String> color) {
         String login = FIRST_NAME + randomAlphabetic(NINE_NUMBER);
         String lastName = LAST_NAME + randomAlphabetic(NINE_NUMBER);
         String address = ADDRESS + randomAlphabetic(NINE_NUMBER);
@@ -52,7 +52,7 @@ public class OrderGenerator {
         int rentTime = generateRentTime();
         String deliveryDate = generateDeliveryDay();
         String comment = COMMENT + randomAlphabetic(NINE_NUMBER);
-        return new OrderDataLombok(login, lastName, address, metroStation, phone, rentTime, deliveryDate, comment,
+        return new OrderData(login, lastName, address, metroStation, phone, rentTime, deliveryDate, comment,
                 color);
     }
 

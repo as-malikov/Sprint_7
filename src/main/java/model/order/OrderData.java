@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OrderDataLombok {
+public class OrderData {
     private String firstName;
     private String lastName;
     private String address;

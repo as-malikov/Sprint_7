@@ -6,9 +6,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class OrderParamLombok {
-    @NonNull
-    private Integer courierId;
+public class OrderParam {
+    @NonNull private Integer courierId;
     private String nearestStation;
     private int limit;
     private int page;

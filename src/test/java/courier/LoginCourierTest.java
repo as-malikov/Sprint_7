@@ -4,8 +4,8 @@ import api.CourierApi;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import model.courier.CourierDataLombok;
-import model.courier.CourierIdLombok;
+import model.courier.CourierData;
+import model.courier.CourierId;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -18,37 +18,37 @@ import static util.CourierGenerator.NUMBER_OF_CHARACTERS;
 import static util.CourierGenerator.getRandomCourierLombok;
 
 public class LoginCourierTest {
-    private static CourierDataLombok courierDataLombok;
+    private static CourierData courierData;
     private static CourierApi courierApi;
-    private static CourierIdLombok courierIdLombok;
+    private static CourierId courierId;
 
     @Before
     public void init() {
-        courierDataLombok = getRandomCourierLombok();
+        courierData = getRandomCourierLombok();
         courierApi = new CourierApi();
-        courierIdLombok = new CourierIdLombok();
-        courierApi.createCourierLombok(courierDataLombok);
+        courierId = new CourierId();
+        courierApi.createCourierLombok(courierData);
     }
 
     @DisplayName("Check courier can be login")
     @Test
     public void courierCanBeLoggedIn() {
-        ValidatableResponse loginCourierResponse = courierApi.loginCourier(courierDataLombok);
+        ValidatableResponse loginCourierResponse = courierApi.loginCourier(courierData);
 
         loginCourierResponse.log().all()
                 .assertThat()
                 .statusCode(SC_OK)
                 .body("id", notNullValue());
 
-        courierIdLombok.setId(loginCourierResponse.extract().jsonPath().getInt("id"));
+        courierId.setId(loginCourierResponse.extract().jsonPath().getInt("id"));
     }
 
     @DisplayName("The courier cannot be login with incorrect name.")
     @Test
     public void courierCanNotBeLoginWithBadNameTest() {
-        CourierDataLombok courierWithoutPassword =
-                new CourierDataLombok(RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS),
-                        courierDataLombok.getLogin(),null);
+        CourierData courierWithoutPassword =
+                new CourierData(RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS),
+                        courierData.getLogin(),null);
         ValidatableResponse loginCourierWithoutPasswordResponse = courierApi.loginCourier(courierWithoutPassword);
 
         loginCourierWithoutPasswordResponse.log().all()
@@ -60,7 +60,7 @@ public class LoginCourierTest {
     @DisplayName("The courier cannot be login with incorrect password.")
     @Test
     public void courierCanNotBeLoginWithBadPasswordTest() {
-        CourierDataLombok courierWithoutPassword = new CourierDataLombok(courierDataLombok.getLogin(),
+        CourierData courierWithoutPassword = new CourierData(courierData.getLogin(),
                 RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS),null);
         ValidatableResponse loginCourierWithoutPasswordResponse = courierApi.loginCourier(courierWithoutPassword);
 
@@ -73,8 +73,8 @@ public class LoginCourierTest {
     @DisplayName("The courier cannot be login without password.")
     @Test
     public void courierCanNotBeLoginWithoutPasswordTest() {
-        CourierDataLombok courierWithoutPassword = new CourierDataLombok(
-                courierDataLombok.getLogin(), null,null);
+        CourierData courierWithoutPassword = new CourierData(
+                courierData.getLogin(), null,null);
         ValidatableResponse loginCourierWithoutPasswordResponse = courierApi.loginCourier(courierWithoutPassword);
 
         loginCourierWithoutPasswordResponse.log().all()
@@ -85,16 +85,16 @@ public class LoginCourierTest {
     @After
     @Step("Login for get id courier and delete him")
     public void deleteCourier() {
-        CourierIdLombok courierIdLombok = new CourierIdLombok();
+        CourierId courierId = new CourierId();
 
-        ValidatableResponse loginCourierResponse = courierApi.loginCourier(courierDataLombok);
+        ValidatableResponse loginCourierResponse = courierApi.loginCourier(courierData);
         if (loginCourierResponse.extract().statusCode() == SC_OK) {
             loginCourierResponse.log().all()
                     .assertThat()
                     .body("id", notNullValue());
-            courierIdLombok.setId(loginCourierResponse.extract().jsonPath().getInt("id"));
+            courierId.setId(loginCourierResponse.extract().jsonPath().getInt("id"));
 
-            ValidatableResponse deleteCourierResponse = courierApi.deleteCourier(courierIdLombok);
+            ValidatableResponse deleteCourierResponse = courierApi.deleteCourier(courierId);
             deleteCourierResponse.log().all()
                     .assertThat()
                     .statusCode(SC_OK)

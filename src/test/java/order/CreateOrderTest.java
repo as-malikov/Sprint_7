@@ -3,7 +3,7 @@ package order;
 import api.OrderApi;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import model.order.OrderDataLombok;
+import model.order.OrderData;
 import model.order.TrackId;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static util.OrderGenerator.*;
 
 public class CreateOrderTest {
-    private static OrderDataLombok order;
+    private static OrderData order;
     private static OrderApi orderApi;
     private static TrackId trackId;
     OrderGenerator orderGenerator;
@@ -31,11 +31,14 @@ public class CreateOrderTest {
     public void orderCanBeCreatedWithoutColorTest() {
         order = getRandomOrderWithoutColor();
         ValidatableResponse createOrderResponse = orderApi.createOrder(order);
-        createOrderResponse.log().all()
+        createOrderResponse.log()
+                .all()
                 .assertThat()
                 .statusCode(SC_CREATED)
                 .body("track", notNullValue());
-        trackId.setId(createOrderResponse.extract().jsonPath().getString("track"));
+        trackId.setId(createOrderResponse.extract()
+                .jsonPath()
+                .getString("track"));
     }
 
     @DisplayName("The order can be created with one BLACK color")
@@ -43,11 +46,14 @@ public class CreateOrderTest {
     public void orderCanBeCreatedWithBlackColorTest() {
         order = getRandomOrderWithBlackColor();
         ValidatableResponse createOrderResponse = orderApi.createOrder(order);
-        createOrderResponse.log().all()
+        createOrderResponse.log()
+                .all()
                 .assertThat()
                 .statusCode(SC_CREATED)
                 .body("track", notNullValue());
-        trackId.setId(createOrderResponse.extract().jsonPath().getString("track"));
+        trackId.setId(createOrderResponse.extract()
+                .jsonPath()
+                .getString("track"));
     }
 
     @DisplayName("The order can be created with BLACK and GREY color")
@@ -55,10 +61,13 @@ public class CreateOrderTest {
     public void orderCanBeCreatedWithBlackAndGreyColorTest() {
         order = getRandomOrderWithBlackAndGreyColor();
         ValidatableResponse createOrderResponse = orderApi.createOrder(order);
-        createOrderResponse.log().all()
+        createOrderResponse.log()
+                .all()
                 .assertThat()
                 .statusCode(SC_CREATED)
                 .body("track", notNullValue());
-        trackId.setId(createOrderResponse.extract().jsonPath().getString("track"));
+        trackId.setId(createOrderResponse.extract()
+                .jsonPath()
+                .getString("track"));
     }
 }

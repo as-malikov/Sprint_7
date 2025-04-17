@@ -1,8 +1,9 @@
 package api;
 
+import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
-import model.order.OrderDataLombok;
-import model.order.OrderParamLombok;
+import model.order.OrderData;
+import model.order.OrderParam;
 
 import static io.restassured.RestAssured.given;
 
@@ -10,7 +11,8 @@ public class OrderApi extends RestApi {
 
     public static final String API_V_1_ORDERS = "/api/v1/orders";
 
-    public ValidatableResponse createOrder(OrderDataLombok order) {
+    @Step("Create order")
+    public ValidatableResponse createOrder(OrderData order) {
         return given().spec(requestSpecification())
                 .and()
                 .body(order)
@@ -19,16 +21,13 @@ public class OrderApi extends RestApi {
                 .then();
     }
 
-    public ValidatableResponse getOrdersList(OrderParamLombok orderParam) {
+    @Step("Get order List")
+    public ValidatableResponse getOrdersList(OrderParam orderParam) {
         return given().spec(requestSpecification())
                 .and()
                 .body(orderParam)
                 .when()
                 .get(API_V_1_ORDERS)
                 .then();
-    }
-
-    public ValidatableResponse cancelOrder() {
-        return null;
     }
 }
