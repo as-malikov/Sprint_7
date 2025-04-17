@@ -1,8 +1,7 @@
 package util;
 
 import io.qameta.allure.Step;
-import model.CourierData;
-import model.courier.CourierDataLombok;
+import model.courier.CourierData;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class CourierGenerator {
@@ -14,21 +13,12 @@ public class CourierGenerator {
     public static final int NUMBER_OF_CHARACTERS = 8;
 
     @Step("Generate random courier default")
-    public static CourierData getRandomCourier() {
+    public static CourierData getRandomCourierLombok() {
         String login = LOGIN + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
         String password = PASSWORD + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
         String firstName = FIRST_NAME + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
 
         return new CourierData(login, password, firstName);
-    }
-
-    @Step("Generate random courier lombok default")
-    public static CourierDataLombok getRandomCourierLombok() {
-        String login = LOGIN + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
-        String password = PASSWORD + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
-        String firstName = FIRST_NAME + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
-
-        return new CourierDataLombok(login, password, firstName);
     }
 
     @Step("Generate random courier by data")
