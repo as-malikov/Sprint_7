@@ -2,6 +2,7 @@ package order;
 
 import api.CourierApi;
 import api.OrderApi;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import model.courier.CourierData;
 import model.courier.CourierId;
@@ -40,6 +41,7 @@ public class ListOrderTest {
         orderParam = getOrderParamByCourierId(courierId);
     }
 
+    @DisplayName("Order List have be returned")
     @Test
     public void ordersListHaveBeReturnedTest() {
         ValidatableResponse orderListResponse = orderApi.getOrdersList(orderParam);
