@@ -11,7 +11,7 @@ public class CourierGenerator {
     public static final String FIRST_NAME = "firstName_";
     public static final String UNDERLINE = "_";
     public static final int NUMBER_OF_CHARACTERS = 8;
-    public static final String ALLEGRA_SILVANA_NAME = "AllegraSilvana";
+    public static final String ALLEGRA_SILVANA_NAME = "AllegraSilvanaDouble";
 
     @Step("Generate random courier default")
     public static CourierData getRandomCourier() {
