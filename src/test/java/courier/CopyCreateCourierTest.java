@@ -7,9 +7,14 @@ import io.restassured.response.ValidatableResponse;
 import model.courier.CourierData;
 import model.courier.CourierId;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.is;
@@ -18,15 +23,35 @@ import static util.CourierGenerator.NUMBER_OF_CHARACTERS;
 import static util.CourierGenerator.getRandomCourier;
 
 @RunWith(Parameterized.class)
-public class CreateCourierTest {
-    private static CourierData courierData;
+public class CopyCreateCourierTest {
+    private final CourierData courierData;
+    private final int expectedStatus;
+    private final boolean expectedBody;
+
+    public CopyCreateCourierTest(CourierData courierData, int expectedStatus, boolean expectedBody) {
+        this.courierData = courierData;
+        this.expectedStatus = expectedStatus;
+        this.expectedBody = expectedBody;
+    }
+
     private static CourierApi courierApi;
     private static ValidatableResponse createCourierResponse;
 
     @Before
     public void init() {
-        courierData = getRandomCourier();
         courierApi = new CourierApi();
+    }
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> canBeCreated() {
+        return Arrays.asList(
+                new Object[]{getRandomCourier(), SC_CREATED, true},
+                new Object[]{getRandomCourier(), SC_CREATED, true},
+                new Object[]{getRandomCourier(), SC_CREATED, true},
+                new Object[]{getRandomCourier(), SC_CREATED, true},
+                new Object[]{getRandomCourier(), SC_CREATED, true},
+                new Object[]{getRandomCourier(), SC_CREATED, true}
+                );
     }
 
     @DisplayName("Check courier can be created")
@@ -36,8 +61,8 @@ public class CreateCourierTest {
         createCourierResponse.log()
                 .all()
                 .assertThat()
-                .statusCode(SC_CREATED)
-                .body("ok", is(true));
+                .statusCode(expectedStatus)
+                .body("ok", is(expectedBody));
     }
 
     @DisplayName("Check courier cannot be created without password")

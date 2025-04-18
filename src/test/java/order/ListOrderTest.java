@@ -13,7 +13,7 @@ import org.junit.Test;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.notNullValue;
-import static util.CourierGenerator.getRandomCourierLombok;
+import static util.CourierGenerator.getRandomCourier;
 import static util.OrderParamGenerator.getOrderParamByCourierId;
 
 public class ListOrderTest {
@@ -23,7 +23,7 @@ public class ListOrderTest {
 
     @Before
     public void init() {
-        CourierData courier = getRandomCourierLombok();
+        CourierData courier = getRandomCourier();
         System.out.println(courier);
         CourierApi courierApi = new CourierApi();
         orderApi = new OrderApi();

@@ -15,7 +15,7 @@ import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static util.CourierGenerator.NUMBER_OF_CHARACTERS;
-import static util.CourierGenerator.getRandomCourierLombok;
+import static util.CourierGenerator.getRandomCourier;
 
 public class LoginCourierTest {
     private static CourierData courierData;
@@ -24,7 +24,7 @@ public class LoginCourierTest {
 
     @Before
     public void init() {
-        courierData = getRandomCourierLombok();
+        courierData = getRandomCourier();
         courierApi = new CourierApi();
         courierId = new CourierId();
         courierApi.createCourierLombok(courierData);

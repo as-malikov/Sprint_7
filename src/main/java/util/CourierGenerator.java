@@ -13,7 +13,7 @@ public class CourierGenerator {
     public static final int NUMBER_OF_CHARACTERS = 8;
 
     @Step("Generate random courier default")
-    public static CourierData getRandomCourierLombok() {
+    public static CourierData getRandomCourier() {
         String login = LOGIN + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
         String password = PASSWORD + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
         String firstName = FIRST_NAME + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
