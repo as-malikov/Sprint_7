@@ -11,6 +11,7 @@ public class CourierGenerator {
     public static final String FIRST_NAME = "firstName_";
     public static final String UNDERLINE = "_";
     public static final int NUMBER_OF_CHARACTERS = 8;
+    public static final String ALLEGRA_SILVANA_NAME = "AllegraSilvana";
 
     @Step("Generate random courier default")
     public static CourierData getRandomCourier() {
@@ -26,6 +27,15 @@ public class CourierGenerator {
         String login = loginParam + UNDERLINE + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
         String password = passwordParam + UNDERLINE + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
         String firstName = firstNameParam + UNDERLINE + RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
+
+        return new CourierData(login, password, firstName);
+    }
+
+    @Step("Generate courier AllegraSilvana")
+    public static CourierData getAllegraSilvanaCourier() {
+        String login = ALLEGRA_SILVANA_NAME;
+        String password = ALLEGRA_SILVANA_NAME;
+        String firstName = ALLEGRA_SILVANA_NAME;
 
         return new CourierData(login, password, firstName);
     }
